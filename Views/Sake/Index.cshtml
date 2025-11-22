@@ -1,0 +1,50 @@
+@model SAKEWeb.Models.SakeViewModel
+
+@{
+    ViewData["Title"] = "Sistem S.A.K.E";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Sistem Audit dan Kesejahteraan Karyawan (S.A.K.E)</h2>
+
+    <form method="post" class="card p-4">
+
+        <div class="mb-3">
+            <label class="form-label">Nama Karyawan</label>
+            <input type="text" name="Nama" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Posisi</label>
+            <select name="Posisi" class="form-control" required>
+                <option value="1">Manajer</option>
+                <option value="2">Staf Senior</option>
+                <option value="3">Staf Junior</option>
+                <option value="4">Non-Struktural</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Total Jam Lembur</label>
+            <input type="number" name="Lembur" class="form-control" required />
+        </div>
+
+        <button class="btn btn-primary">Proses</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <div class="alert alert-info mt-4">
+            <h4>Rangkuman</h4>
+            <p><b>Nama:</b> @Model.Nama</p>
+            <p><b>Tunjangan Dasar:</b> Rp @Model.TunjanganDasar.ToString("N0")</p>
+            <p><b>Bonus Lembur:</b> Rp @Model.BonusLembur.ToString("N0")</p>
+            <p><b>Total Bonus Akhir:</b> Rp @Model.TotalBonusAkhir.ToString("N0")</p>
+            <p><b>Status Kinerja:</b> @Model.StatusKinerja</p>
+        </div>
+    }
+
+    <div class="alert alert-success mt-3">
+        <b>Total Bonus Global:</b> Rp @ViewBag.TotalGlobal.ToString("N0")
+    </div>
+</div>
